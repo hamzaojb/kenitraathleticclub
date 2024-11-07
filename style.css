@@ -1,0 +1,626 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style-type: none;
+}
+
+:root {
+    --container: 144rem;
+    --m-auto: 0 auto;
+    --white: #fff;
+    --primary: #096b19;
+    --secondary: #eeeee4;
+    --gr-1: rgba(24, 136, 29, 0.607);
+    --gr-2: rgba(3, 105, 25, 0.665);
+    --nav: rgba(6, 155, 43, 0.045);
+    --mobile-nav: #076325;
+    --count-down-bg: rgba(238, 235, 235, 0.295);
+    --timer-before-bg: rgb(218, 201, 109);
+}
+
+html {
+    font-size: 62.5%;
+    scroll-behavior: smooth;
+    font-family: 'Poppins', sans-serif;
+}
+
+::-webkit-scrollbar {
+    width: 0;
+}
+
+body {
+    font-size: 1.6rem;
+}
+
+.container {
+    max-width: var(--container);
+    padding: 0 2rem;
+    margin: var(--m-auto);
+}
+
+#hero {
+    background: linear-gradient(var(--gr-1), var(--gr-2)), url(images/hero-image.png) no-repeat center center / cover;
+}
+
+.header {
+    background: var(--nav);
+    backdrop-filter: blur(10px);
+}
+
+.navigation {
+    height: 10rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo .logo-img {
+    width: 17rem;
+}
+
+.mobile-menu-icon {
+    display: none;
+    cursor: pointer;
+}
+
+.mobile-menu-icon .menu_icon {
+    font-size: 5rem;
+    color: var(--white);
+}
+
+.nav_list {
+    display: inline-block;
+    margin: 0 1rem;
+}
+
+.nav_link {
+    font-size: 1.6rem;
+    color: var(--white);
+}
+
+.nav_link.active {
+    position: relative;
+}
+
+.nav_link.active::before {
+    position: absolute;
+    content: '';
+    left: 50%;
+    transform: rotate(45deg) translateX(-50%);
+    bottom: -1.5rem;
+    width: 0.7rem;
+    height: 0.7rem;
+    background: var(--secondary);
+}
+
+.btn-nav {
+    margin-left: 5rem;
+}
+
+.btn-outline,
+.btn-primary {
+    padding: 0.6rem 2rem;
+    border: 0.2rem solid var(--secondary);
+    color: var(--white);
+    font-weight: 500;
+    border-radius: 3rem;
+    transition: all 0.5s ease-in;
+    display: inline-flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.btn-outline ion-icon,
+.btn-primary ion-icon {
+    font-size: 2.7rem;
+    --ionicon-stroke-width: 4.4rem;
+}
+
+.btn-outline:hover,
+.btn-primary:hover {
+    border-color: var(--secondary);
+    color: var(--primary);
+    background: var(--secondary);
+    transition: all 0.5s ease-in;
+}
+
+.hero-main-container {
+    padding: 9rem 0;
+    height: 90lvh;
+}
+
+.hero-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+    align-items: center;
+}
+
+.hero-image {
+    text-align: center;
+}
+
+.hero-img {
+    max-width: 45rem;
+}
+
+.section-heading {
+    font-size: 5rem;
+    line-height: 6rem;
+    color: var(--secondary);
+}
+
+.paragraph {
+    font-size: 1.6rem;
+    color: var(--white);
+    margin: 3rem 0;
+}
+
+.worldcup-count-down {
+    max-width: 45rem;
+    border-radius: 1rem;
+    background: var(--count-down-bg);
+    backdrop-filter: blur(10px);
+    padding: 1rem;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+}
+
+.count {
+    position: relative;
+    text-align: center;
+}
+
+.count:not(:first-child)::before {
+    position: absolute;
+    content: '';
+    left: -1rem;
+    top: 50%;
+    width: 0.5rem;
+    height: 0.5rem;
+    transform: rotate(45deg) translateY(-50%);
+    background: var(--timer-before-bg);
+}
+
+.count h3 {
+    font-size: 2.5rem;
+    color: var(--white);
+}
+
+.count .count-time {
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    font-weight: 500;
+    color: var(--secondary);
+}
+
+.running {
+    grid-column: 1 / 3;
+    color: var(--secondary);
+}
+
+@media (max-width: 904px) {
+    .mobile-menu-icon {
+        display: block;
+    }
+    .nav_menu {
+        position: absolute;
+        visibility: hidden;
+        clip-path: circle(0% at 96% -20%);
+        top: 4rem;
+        left: 0;
+        width: 100%;
+        padding: 6rem 0;
+        background: var(--mobile-nav);
+        z-index: -1;
+        transition: all 0.7s ease-in-out;
+    }
+    .nav_menu.active {
+        visibility: visible;
+        clip-path: circle(150% at 100% 100%);
+        transition: all 0.7s ease-in-out;
+    }
+    .nav_list {
+        display: block;
+        text-align: center;
+        margin: 2.5rem 0;
+    }
+    .hero-img {
+        width: 100%;
+    }
+}
+
+@media (max-width: 639px) {
+    .hero-image {
+        grid-row: 1;
+    }
+    .hero-img {
+        max-width: 30rem;
+    }
+}
+
+.standings-heading {
+    padding-top: 2rem;
+    font-size: 4rem;
+}
+
+.loader {
+    height: 40rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.points-container {
+    padding: 3rem 0 5rem 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+    gap: 2rem;
+}
+
+.points-table {
+    box-shadow: 0 0 0.5rem 0.2rem var(--secondary);
+    border-radius: 0.5rem;
+}
+
+.group-heading {
+    padding: 0.5rem 0;
+    font-size: 2.5rem;
+    text-align: center;
+    text-transform: uppercase;
+    color: var(--secondary);
+    background: #7f1533;
+    border-top-left-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
+}
+
+.points-table table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.points-table table thead tr {
+    text-align: left;
+    background: #500f21;
+}
+
+.points-table table thead tr th {
+    padding: 1rem;
+    color: var(--secondary);
+}
+
+.points-table table tbody tr:not(:last-child) {
+    border-bottom: 0.02rem solid rgba(118, 114, 115, 0.447);
+}
+
+.points-table table tbody tr:nth-child(1),
+.points-table table tbody tr:nth-child(2) {
+    background: #e1e7f1;
+    font-weight: bold;
+}
+
+.points-table table tbody tr td {
+    padding: 0.7rem 0;
+    text-align: center;
+}
+
+.team-flag {
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    object-fit: cover;
+    background-position: center;
+    box-shadow: 0 0 0.5rem rgb(143, 112, 112);
+}
+
+.d-a {
+    padding: 0 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+/* Style pour le conteneur du titre */
+.match-title {
+    margin-bottom: 10px;
+    margin-top: 40px;
+}
+
+.match-title h2 {
+    font-size: 36px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #333;
+}
+
+/* Style pour chaque équipe */
+.team {
+    padding: 0 10px;
+    border-radius: 5px;
+    display: inline-block;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+/* Couleur et effet de survol pour l'équipe KAC */
+.team-kac {
+    color: #fff;
+    background-color: #047204; /* Bleu vif pour KAC */
+}
+
+.team-kac:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 8px rgba(30, 144, 255, 0.4);
+}
+
+/* Couleur et effet de survol pour l'équipe RAC */
+.team-rac {
+    color: #070707;
+    background-color: #f4faf0; /* Orange vif pour RAC */
+}
+
+.team-rac:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 8px rgba(255, 69, 0, 0.4);
+}
+
+
+/* Conteneur principal de l'image de fond */
+.hero-main-stadium {
+    background-image: url('images/stadiumkac.jpeg'); /* Remplacez par le chemin de votre image */
+    background-size: cover;  /* L'image couvre toute la section */
+    background-position: center;  /* L'image est centrée */
+    height: 88vh;  /* Prend une grande partie de la fenêtre */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    color: white;  /* Texte en blanc pour contraster avec l'image */
+    text-align: center;
+    overflow: hidden;  /* Empêche le débordement de l'image */
+    animation: fadeIn 2s ease-in-out;  /* Animation d'apparition progressive */
+}
+
+/* Effet d'animation pour la section principale */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Contenu de la section */
+.hero-content-stadium {
+    background-color: rgba(0, 0, 0, 0.6);  /* Fond sombre transparent */
+    padding: 40px;
+    border-radius: 15px;
+    max-width: 700px;
+    text-align: center;
+    transform: translateY(50px);  /* Position initiale légèrement en bas */
+    animation: slideUp 1.5s ease-out;  /* Animation de déplacement vers le haut */
+}
+
+/* Animation de glissement vers le haut */
+@keyframes slideUp {
+    from {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Styles du titre */
+.hero-content-stadium h1 {
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    animation: textPopIn 1s ease-out;  /* Animation du titre */
+}
+
+/* Animation du texte */
+@keyframes textPopIn {
+    from {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Styles du texte */
+.hero-content-stadium p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    animation: textPopIn 1s ease-out;  /* Animation du texte */
+    animation-delay: 0.5s;  /* Retarde l'animation du texte */
+}
+
+/* Bouton avec effet de survol */
+.hero-content-stadium .btn-cta {
+    background-color: #4CAF50;  /* Bouton vert */
+    color: white;
+    padding: 15px 30px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Transition du fond et du bouton */
+    margin-top: 20px;
+}
+
+.hero-content-stadium .btn-cta:hover {
+    background-color: #45a049;  /* Changement de couleur au survol */
+    transform: scale(1.1);  /* Agrandissement du bouton au survol */
+}
+
+/* Animation du bouton */
+.hero-content-stadium .btn-cta {
+    animation: buttonPopIn 0.8s ease-out;  /* Animation du bouton */
+    animation-delay: 1s;  /* Retarde l'animation du bouton */
+}
+
+
+
+/* Contenu principal : texte à droite et image à gauche */
+.hero-content-schedule {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    width: 100%;
+    animation: fadeIn 2s ease-in-out;
+}
+
+
+
+/* Partie image */
+.image-side {
+    max-width: 45%;
+    animation: imageSlideIn 1.5s ease-out;
+}
+
+
+.image-side img {
+    width: 100%;
+    height: auto;
+    margin-left: 25px;
+}
+
+.schedule-img {
+    max-width: 35rem;
+}
+
+/* Style du score */
+.score {
+    font-size: 3rem;  /* Taille du texte du score */
+    font-weight: bold;  /* Met le score en gras */
+    color: #fff;  /* Texte blanc pour contraster avec l'arrière-plan */
+    background-color: #030a11;  /* Fond bleu pour rappeler l'esprit sportif et professionnel */
+    padding: 20px 190px;  /* Espacement généreux autour du texte */
+    border-radius: 12px;  /* Coins arrondis pour un look moderne */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);  /* Ombre subtile pour ajouter de la profondeur */
+    text-align: center;  /* Centrer le texte */
+    letter-spacing: 2px;  /* Un peu d'espacement entre les caractères */
+    transition: background-color 0.3s ease, transform 0.3s ease;  /* Transition fluide pour l'animation */
+}
+
+/* Animation au survol pour rendre le score plus interactif */
+.score:hover {
+    background-color: #0056b3;  /* Changement de couleur au survol */
+    transform: scale(1.1);  /* Légère augmentation du score au survol */
+}
+
+/* Effet de l'animation lorsque le score apparaît */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Appliquer l'animation de fade-in */
+.score {
+    animation: fadeIn 1s ease-out;
+}
+
+
+
+/* Style du Modal */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);  /* Fond sombre pour l'effet modal */
+    display: none;  /* Masqué par défaut */
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    animation: fadeInModal 0.3s ease;
+}
+
+/* Animation pour l'apparition du modal */
+@keyframes fadeInModal {
+    0% {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.modal-content {
+    background-color: #04c042;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    width: 80%;
+    max-width: 500px;
+    animation: fadeInContent 0.5s ease;
+}
+
+/* Animation pour le contenu du modal */
+@keyframes fadeInContent {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.modal h2 {
+    font-size: 2rem;
+    margin-bottom: 15px;
+}
+
+.modal p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+
+.modal-buttons {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+.modal-buttons button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-secondary {
+    background-color: #e5ece6;
+    color: #333;
+    border: 1px solid #01a833;
+}
+
+.btn-secondary:hover {
+    background-color: #16a803;
+}
